@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов»
 
 * Студент: [Александр Медведев](https://up.htmlacademy.ru/react/14/user/1174257).
-* Наставник: `Неизвестно`.
+* Наставник: [Yulia Volkova](https://htmlacademy.ru/profile/id423707).
 
 ---
 
