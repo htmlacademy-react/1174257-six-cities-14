@@ -1,4 +1,4 @@
-import {MainProps} from '../../pages/main/main';
+import {MainProps} from '../pages/main/main';
 
 export const MainData: MainProps = {
   placesCount: 312,
