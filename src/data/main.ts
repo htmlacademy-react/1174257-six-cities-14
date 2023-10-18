@@ -1,11 +1,75 @@
-import {MainProps} from '../pages/main/main';
+import uniqid from 'uniqid';
+import { MainProps } from '../pages/main/main';
+import { MainTabsProps } from '../components/main-tabs/main-tabs';
+import { MainSortProps } from '../components/main-sort/main-sort';
 
-export const MainData: MainProps = {
+export const mainSortData: MainSortProps = {
+  options: [
+    {
+      id: uniqid(),
+      text: 'Popular',
+    },
+    {
+      id: uniqid(),
+      text: 'Price: low to high',
+    },
+    {
+      id: uniqid(),
+      text: 'Price: high to low',
+    },
+    {
+      id: uniqid(),
+      text: 'Top rated first',
+    },
+  ],
+};
+
+export const mainTabsData: MainTabsProps = {
+  list: [
+    {
+      href: '#',
+      text: 'Paris',
+      id: uniqid(),
+    },
+    {
+      href: '#',
+      text: 'Cologne',
+      id: uniqid(),
+    },
+    {
+      href: '#',
+      text: 'Brussels',
+      id: uniqid(),
+    },
+    {
+      href: '#',
+      isActive: true,
+      text: 'Amsterdam',
+      id: uniqid(),
+    },
+    {
+      href: '#',
+      text: 'Hamburg',
+      id: uniqid(),
+    },
+    {
+      href: '#',
+      text: 'Dusseldorf',
+      id: uniqid(),
+    },
+  ],
+};
+
+export const mainData: MainProps = {
   placesCount: 312,
   placesCity: 'Amsterdam',
+  mainTabs: mainTabsData,
+  mainSort: mainSortData,
   cards: [
     {
-      id: 'sd1e12das',
+      id: uniqid(),
+      className: 'cities__card',
+      imageClassName: 'cities__image-wrapper',
       title: 'Beautiful & luxurious apartment at great location',
       placeType: 'Apartment',
       mark: 'Premium',
@@ -18,7 +82,9 @@ export const MainData: MainProps = {
       isBookmark: false,
     },
     {
-      id: 'sd1das',
+      id: uniqid(),
+      className: 'cities__card',
+      imageClassName: 'cities__image-wrapper',
       title: 'Wood and stone place',
       placeType: 'Room',
       priceValue: 80,
@@ -30,7 +96,9 @@ export const MainData: MainProps = {
       isBookmark: true,
     },
     {
-      id: 'se12das',
+      id: uniqid(),
+      className: 'cities__card',
+      imageClassName: 'cities__image-wrapper',
       title: 'Canal View Prinsengracht',
       placeType: 'Apartment',
       priceValue: 132,
@@ -42,7 +110,9 @@ export const MainData: MainProps = {
       isBookmark: false,
     },
     {
-      id: 'sd1e12s',
+      id: uniqid(),
+      className: 'cities__card',
+      imageClassName: 'cities__image-wrapper',
       title: 'Nice, cozy, warm big bed apartment',
       placeType: 'Apartment',
       mark: 'Premium',
@@ -55,7 +125,9 @@ export const MainData: MainProps = {
       isBookmark: false,
     },
     {
-      id: '1e12da',
+      id: uniqid(),
+      className: 'cities__card',
+      imageClassName: 'cities__image-wrapper',
       title: 'Wood and stone place',
       placeType: 'Room',
       priceValue: 80,
