@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {App} from './components/app/app';
-import {MainData} from './data/main';
+import App from './components/app/app';
+import {mainData} from './data/main';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -10,7 +10,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <App
-      main={MainData}
+      main={mainData}
     />
   </React.StrictMode>
 );
