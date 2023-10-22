@@ -1,8 +1,9 @@
 import Header from '../../components/header/header';
-import MainTabs, { MainTabsProps } from '../../components/main-tabs/main-tabs';
+import MainTabs, { MainTabsProps } from './components/main-tabs/main-tabs';
 import PlaceCard, { PlaceCardProps } from '../../components/place-card/place-card';
 import Map from '../../components/map/map';
-import MainSort, { MainSortProps } from '../../components/main-sort/main-sort';
+import MainSort, { MainSortProps } from './components/main-sort/main-sort';
+import uniqid from 'uniqid';
 
 export type MainProps = {
   placesCount: number;
@@ -38,12 +39,12 @@ export default function Main({
               <MainSort {...mainSort} />
 
               <div className="cities__places-list places__list tabs__content">
-                {cards.map((card: PlaceCardProps) => <PlaceCard {...card} key={card.id}/>)}
+                {cards.map((card: PlaceCardProps) => <PlaceCard {...card} key={uniqid()}/>)}
               </div>
             </section>
 
             <div className="cities__right-section">
-              <Map className='cities__map'/>
+              <Map className='cities__map' />
             </div>
 
           </div>

@@ -1,8 +1,10 @@
+import uniqid from 'uniqid';
+
 type SortOption = {
-  id: string;
   isActive?: boolean;
   text: string;
 };
+
 export type MainSortProps = {
   options: SortOption[];
 };
@@ -20,7 +22,7 @@ export default function MainSort({options}: MainSortProps) {
       <ul className="places__options places__options--custom"> {/* TODO active class: places__options--opened */}
         {options.map((item) => (
           <li
-            key={item.id}
+            key={uniqid()}
             className={`places__option ${item.isActive && 'places__option--active'}`}
             tabIndex={0}
           >

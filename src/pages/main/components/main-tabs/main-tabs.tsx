@@ -1,5 +1,5 @@
+import uniqid from 'uniqid';
 type TabItem = {
-  id: string;
   href: string;
   isActive?: boolean;
   text: string;
@@ -15,7 +15,7 @@ export default function MainTabs({list}: MainTabsProps): JSX.Element {
       <section className="locations container">
         <ul className="locations__list tabs__list">
           {list.map((item) => (
-            <li className="locations__item" key={item.id}>
+            <li className="locations__item" key={uniqid()}>
 
               {item.isActive && (
                 <a
