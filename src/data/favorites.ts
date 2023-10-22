@@ -1,13 +1,12 @@
-import uniqid from 'uniqid';
 import { FavoritesProps } from '../pages/favorites/favorites';
 
 export const favoritesData: FavoritesProps = {
   list: [
     {
       placeCity: 'Amsterdam',
+      href: '#',
       cards: [
         {
-          id: uniqid(),
           className: 'favorites__card',
           imageClassName: 'favorites__image-wrapper',
           infoCardClassName: 'favorites__card-info',
@@ -17,13 +16,15 @@ export const favoritesData: FavoritesProps = {
           priceValue: 180,
           priceSuffix: 'night',
           currencyToken: '€',
-          starRating: 5,
+          starLabel: {
+            value: 5,
+            parentClassName: 'place-card',
+          },
           imageSrc: 'img/apartment-small-03.jpg',
           placeLinkSrc: '#',
           isBookmark: true,
         },
         {
-          id: uniqid(),
           className: 'favorites__card',
           imageClassName: 'favorites__image-wrapper',
           infoCardClassName: 'favorites__card-info',
@@ -32,7 +33,10 @@ export const favoritesData: FavoritesProps = {
           priceValue: 80,
           priceSuffix: 'night',
           currencyToken: '€',
-          starRating: 4,
+          starLabel: {
+            value: 5,
+            parentClassName: 'place-card',
+          },
           imageSrc: 'img/room-small.jpg',
           placeLinkSrc: '#',
           isBookmark: true,
@@ -41,9 +45,9 @@ export const favoritesData: FavoritesProps = {
     },
     {
       placeCity: 'Colonge',
+      href: '#',
       cards: [
         {
-          id: uniqid(),
           className: 'favorites__card',
           imageClassName: 'favorites__image-wrapper',
           infoCardClassName: 'favorites__card-info',
@@ -52,7 +56,10 @@ export const favoritesData: FavoritesProps = {
           priceValue: 180,
           priceSuffix: 'night',
           currencyToken: '€',
-          starRating: 5,
+          starLabel: {
+            value: 4,
+            parentClassName: 'place-card',
+          },
           imageSrc: 'img/apartment-small-04.jpg',
           placeLinkSrc: '#',
           isBookmark: true,

@@ -1,24 +1,19 @@
-import uniqid from 'uniqid';
 import { MainProps } from '../pages/main/main';
-import { MainTabsProps } from '../components/main-tabs/main-tabs';
-import { MainSortProps } from '../components/main-sort/main-sort';
+import { MainTabsProps } from '../pages/main/components/main-tabs/main-tabs';
+import { MainSortProps } from '../pages/main/components/main-sort/main-sort';
 
 export const mainSortData: MainSortProps = {
   options: [
     {
-      id: uniqid(),
       text: 'Popular',
     },
     {
-      id: uniqid(),
       text: 'Price: low to high',
     },
     {
-      id: uniqid(),
       text: 'Price: high to low',
     },
     {
-      id: uniqid(),
       text: 'Top rated first',
     },
   ],
@@ -29,33 +24,27 @@ export const mainTabsData: MainTabsProps = {
     {
       href: '#',
       text: 'Paris',
-      id: uniqid(),
     },
     {
       href: '#',
       text: 'Cologne',
-      id: uniqid(),
     },
     {
       href: '#',
       text: 'Brussels',
-      id: uniqid(),
     },
     {
       href: '#',
       isActive: true,
       text: 'Amsterdam',
-      id: uniqid(),
     },
     {
       href: '#',
       text: 'Hamburg',
-      id: uniqid(),
     },
     {
       href: '#',
       text: 'Dusseldorf',
-      id: uniqid(),
     },
   ],
 };
@@ -67,7 +56,6 @@ export const mainData: MainProps = {
   mainSort: mainSortData,
   cards: [
     {
-      id: uniqid(),
       className: 'cities__card',
       imageClassName: 'cities__image-wrapper',
       title: 'Beautiful & luxurious apartment at great location',
@@ -76,13 +64,15 @@ export const mainData: MainProps = {
       priceValue: 120,
       priceSuffix: 'night',
       currencyToken: '€',
-      starRating: 4,
+      starLabel: {
+        value: 4,
+        parentClassName: 'place-card',
+      },
       imageSrc: 'img/apartment-01.jpg',
       placeLinkSrc: '#',
       isBookmark: false,
     },
     {
-      id: uniqid(),
       className: 'cities__card',
       imageClassName: 'cities__image-wrapper',
       title: 'Wood and stone place',
@@ -90,13 +80,15 @@ export const mainData: MainProps = {
       priceValue: 80,
       priceSuffix: 'night',
       currencyToken: '€',
-      starRating: 4,
+      starLabel: {
+        value: 4,
+        parentClassName: 'place-card',
+      },
       imageSrc: 'img/room.jpg',
       placeLinkSrc: '#',
       isBookmark: true,
     },
     {
-      id: uniqid(),
       className: 'cities__card',
       imageClassName: 'cities__image-wrapper',
       title: 'Canal View Prinsengracht',
@@ -104,13 +96,15 @@ export const mainData: MainProps = {
       priceValue: 132,
       priceSuffix: 'night',
       currencyToken: '€',
-      starRating: 4,
+      starLabel: {
+        value: 4,
+        parentClassName: 'place-card',
+      },
       imageSrc: 'img/apartment-02.jpg',
       placeLinkSrc: '#',
       isBookmark: false,
     },
     {
-      id: uniqid(),
       className: 'cities__card',
       imageClassName: 'cities__image-wrapper',
       title: 'Nice, cozy, warm big bed apartment',
@@ -119,13 +113,15 @@ export const mainData: MainProps = {
       priceValue: 180,
       priceSuffix: 'night',
       currencyToken: '€',
-      starRating: 5,
+      starLabel: {
+        value: 5,
+        parentClassName: 'place-card',
+      },
       imageSrc: 'img/apartment-03.jpg',
       placeLinkSrc: '#',
       isBookmark: false,
     },
     {
-      id: uniqid(),
       className: 'cities__card',
       imageClassName: 'cities__image-wrapper',
       title: 'Wood and stone place',
@@ -133,7 +129,10 @@ export const mainData: MainProps = {
       priceValue: 80,
       priceSuffix: 'night',
       currencyToken: '€',
-      starRating: 4,
+      starLabel: {
+        value: 4,
+        parentClassName: 'place-card',
+      },
       imageSrc: 'img/room.jpg',
       placeLinkSrc: '#',
       isBookmark: true,
