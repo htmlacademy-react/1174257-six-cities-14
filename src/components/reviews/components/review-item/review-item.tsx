@@ -1,7 +1,7 @@
 import Image from '../../../../ui/image/image';
 import StarLabel from '../../../star-label/star-label';
 
-type userProps = {
+type UserProps = {
   avatarUrl: string;
   name: string;
 }
@@ -10,7 +10,7 @@ export type ReviewItemProps = {
   rating: number;
   comment: string;
   date: string;
-  user: userProps;
+  user: UserProps;
 };
 
 export default function ReviewItem({
