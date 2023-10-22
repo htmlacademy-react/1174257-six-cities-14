@@ -1,13 +1,10 @@
 import Footer from '../../components/footer/footer';
 import Header from '../../components/header/header';
 import uniqid from 'uniqid';
-import PlaceCard, { PlaceCardProps } from '../../components/place-card/place-card';
+import FavoritesItem, { FavoritesItemProps } from './components/favorites-item/favorites-item';
 
 export type FavoritesProps = {
-  list: {
-    placeCity: string;
-    cards: PlaceCardProps[];
-  }[];
+  list: FavoritesItemProps[];
 }
 
 export default function Favorites({list}: FavoritesProps): JSX.Element {
@@ -20,20 +17,7 @@ export default function Favorites({list}: FavoritesProps): JSX.Element {
           <section className="favorites">
             <h1 className="favorites__title">Saved listing</h1>
             <ul className="favorites__list">
-              {list.map((item) => (
-                <li className="favorites__locations-items" key={uniqid()}>
-                  <div className="favorites__locations locations locations--current">
-                    <div className="locations__item">
-                      <a className="locations__item-link" href="#">
-                        <span>{item.placeCity}</span>
-                      </a>
-                    </div>
-                  </div>
-                  <div className="favorites__places">
-                    {item.cards.map((card: PlaceCardProps) => <PlaceCard {...card} key={card.id}/>)}
-                  </div>
-                </li>
-              ))}
+              {list.map((item: FavoritesItemProps) => <FavoritesItem {...item} key={uniqid()} />)}
             </ul>
           </section>
         </div>
