@@ -1,14 +1,14 @@
 import classNames from 'classnames';
+import StarLabel, { StarLabelProps } from '../star-label/star-label';
 
 export type PlaceCardProps = {
-  id: string;
   title: string | JSX.Element;
   placeType: string;
   mark?: string;
   priceValue: number;
   priceSuffix: string;
   currencyToken?: string;
-  starRating: 1 | 2 | 3 | 4 | 5;
+  starLabel: StarLabelProps;
   imageSrc: string;
   placeLinkSrc: string;
   isBookmark: boolean;
@@ -18,14 +18,13 @@ export type PlaceCardProps = {
 };
 
 export default function PlaceCard({
-  id,
   title,
   placeType,
   mark,
   priceValue,
   priceSuffix,
   currencyToken = '€',
-  starRating,
+  starLabel,
   imageSrc,
   placeLinkSrc,
   isBookmark,
@@ -38,7 +37,7 @@ export default function PlaceCard({
   const infoCardClass = classNames('place-card__info', infoCardClassName);
 
   return (
-    <article className={cardClass} key={id}>
+    <article className={cardClass}>
       {mark &&
       <div className="place-card__mark">
         <span>{mark}</span>
@@ -82,12 +81,9 @@ export default function PlaceCard({
             </span>
           </button>
         </div>
-        <div className="place-card__rating rating">
-          <div className="place-card__stars rating__stars">
-            <span style={{ width: `${String(starRating * 20)}%`}} />
-            <span className="visually-hidden">Rating</span>
-          </div>
-        </div>
+
+        <StarLabel {...starLabel} />
+
         <h2 className="place-card__name">
           <a href={placeLinkSrc}>{title}</a>
         </h2>
