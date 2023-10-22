@@ -13,7 +13,7 @@ export default function StarRating({
 
   return (
     <div className={starClass}>
-      {elements.map((item, i, array) => (
+      {elements.map((_item, i, array) => (
         <>
           <input
             className="form__rating-input visually-hidden"
