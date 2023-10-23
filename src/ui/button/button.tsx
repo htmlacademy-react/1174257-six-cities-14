@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 
 type ButtonProps = {
   type?: 'button' | 'submit' | 'reset';
@@ -20,14 +21,14 @@ export default function Button({
   const buttonClass = classNames('button', className);
 
   return href ? (
-    <a
-      href={href}
+    <Link
+      to={href}
       className={buttonClass}
       tabIndex={isDisabled ? 0 : void 0}
     >
       {text}
       {children}
-    </a>
+    </Link>
   ) : (
     <button
       type={type}

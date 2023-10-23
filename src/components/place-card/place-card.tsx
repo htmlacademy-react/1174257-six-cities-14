@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import StarLabel, { StarLabelProps } from '../star-label/star-label';
+import { Link } from 'react-router-dom';
 
 export type PlaceCardProps = {
   title: string | JSX.Element;
@@ -43,7 +44,7 @@ export default function PlaceCard({
         <span>{mark}</span>
       </div>}
       <div className={imageCardClass}>
-        <a href={placeLinkSrc}>
+        <Link to={placeLinkSrc}>
           <img
             className="place-card__image"
             src={imageSrc}
@@ -51,7 +52,7 @@ export default function PlaceCard({
             height={200}
             alt="Place image"
           />
-        </a>
+        </Link>
       </div>
       <div className={infoCardClass}>
         <div className="place-card__price-wrapper">
@@ -85,7 +86,7 @@ export default function PlaceCard({
         <StarLabel {...starLabel} />
 
         <h2 className="place-card__name">
-          <a href={placeLinkSrc}>{title}</a>
+          <Link to={placeLinkSrc}>{title}</Link>
         </h2>
         <p className="place-card__type">{placeType}</p>
       </div>

@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom';
 import uniqid from 'uniqid';
+
 type TabItem = {
   href: string;
   isActive?: boolean;
@@ -18,20 +20,21 @@ export default function MainTabs({list}: MainTabsProps): JSX.Element {
             <li className="locations__item" key={uniqid()}>
 
               {item.isActive && (
-                <a
+                <Link
                   className='locations__item-link tabs__item tabs__item--active'
+                  to={item.href}
                 >
                   <span>{item.text}</span>
-                </a>
+                </Link>
               )}
 
               {!item.isActive && (
-                <a
+                <Link
                   className='locations__item-link tabs__item'
-                  href={item.href}
+                  to={item.href}
                 >
                   <span>{item.text}</span>
-                </a>
+                </Link>
               )}
 
             </li>
