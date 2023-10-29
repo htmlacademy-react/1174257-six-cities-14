@@ -15,10 +15,7 @@ type LayoutProps = {
 }
 
 export default function Layout({
-  className = {
-    gray: false,
-    page: '',
-  },
+  className = {},
   mainElClassName = {},
   isMainPage = false,
   hasFooter = false,
@@ -45,35 +42,3 @@ export default function Layout({
     </div>
   );
 }
-
-{/*
-<div className="page page--gray page--login">
-  <Header />
-
-  <main className="page__main page__main--login">
-  </main>
-</div>
-
-
-<div className="page page--gray page--main">
-  <Header isMainPage />
-
-  <main className="page__main page__main--index">
-  </main>
-</div>
-
-
-<div className="page page--gray page--not-found">
-  <Header />
-
-  <main className="page__main page__main--login">
-  </main>
-</div>
-
-
-<div className="page">
-  <Header />
-
-  <main className="page__main page__main--offer"></main>
-</div>
-*/}
