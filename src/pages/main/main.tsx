@@ -22,6 +22,7 @@ export default function Main({
 }: MainProps): JSX.Element {
   return (
     <Layout
+      isMainPage
       className={{gray: true, page: 'main'}}
       mainElClassName={{mod: 'index'}}
     >
