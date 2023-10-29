@@ -1,9 +1,9 @@
-import Header from '../../components/header/header';
 import MainTabs, { MainTabsProps } from './components/main-tabs/main-tabs';
 import PlaceCard, { PlaceCardProps } from '../../components/place-card/place-card';
 import Map from '../../components/map/map';
 import MainSort, { MainSortProps } from './components/main-sort/main-sort';
 import uniqid from 'uniqid';
+import Layout from '../../components/layout/layout';
 
 export type MainProps = {
   placesCount: number;
@@ -21,10 +21,11 @@ export default function Main({
   mainSort,
 }: MainProps): JSX.Element {
   return (
-    <div className="page page--gray page--main">
-      <Header isMainPage />
-
-      <main className="page__main page__main--index">
+    <Layout
+      className={{gray: true, page: 'main'}}
+      mainElClassName={{mod: 'index'}}
+    >
+      <>
         <h1 className="visually-hidden">Cities</h1>
 
         <MainTabs {...mainTabs}/>
@@ -49,7 +50,7 @@ export default function Main({
 
           </div>
         </div>
-      </main>
-    </div>
+      </>
+    </Layout>
   );
 }
