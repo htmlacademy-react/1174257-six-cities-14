@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
+import { Path } from '../../data/path';
 
 type HeaderProps = {
   isMainPage?: boolean;
@@ -7,12 +9,16 @@ type HeaderProps = {
 export default function Header({
   isMainPage = false,
 }: HeaderProps): JSX.Element {
+  const logoClass = classNames('header__logo-link', {
+    ['header__logo-link--active']: isMainPage,
+  });
+
   return (
     <header className="header">
       <div className="container">
         <div className="header__wrapper">
           <div className="header__left">
-            <Link className={`header__logo-link ${isMainPage ? 'header__logo-link--active' : ''}`} to='/'>
+            <Link className={logoClass} to={Path.Main}>
               <img
                 className="header__logo"
                 src="img/logo.svg"
