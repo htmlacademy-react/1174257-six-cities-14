@@ -20,7 +20,7 @@ export default function Login(): JSX.Element {
               placeholder='Email'
               isRequired
               className='login__input-wrapper'
-              inputClassName='form__input'
+              inputClassName='login__input'
             />
             <Field
               label='Password'
@@ -29,7 +29,7 @@ export default function Login(): JSX.Element {
               placeholder='Password'
               isRequired
               className='login__input-wrapper'
-              inputClassName='form__input'
+              inputClassName='login__input'
             />
             <Button
               text='Sign in'
