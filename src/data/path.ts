@@ -1,6 +1,6 @@
 export enum Path {
   Main = '/',
   Login = '/login',
-  Favorites = 'favorites',
+  Favorites = '/favorites',
   Offer = '/offer/:id',
 }

@@ -47,7 +47,6 @@ export default function Offer({
       mainElClassName={{mod: 'offer'}}
     >
       <>
-
         <section className="offer">
 
           <OfferGallery {...gallery} />
