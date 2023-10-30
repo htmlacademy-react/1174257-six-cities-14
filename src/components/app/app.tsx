@@ -27,7 +27,13 @@ export default function App({
       <BrowserRouter>
         <Routes>
           <Route path={Path.Main} element={<Main {...main} />} />
-          <Route path={Path.Login} element={<Login />} />
+          <Route path={Path.Login}
+            element={
+              <ProtectRoute status={authStatus} redirect={Path.Main} revers>
+                <Login />
+              </ProtectRoute>
+            }
+          />
           <Route path={Path.Favorites}
             element={
               <ProtectRoute status={authStatus} redirect={Path.Login}>
