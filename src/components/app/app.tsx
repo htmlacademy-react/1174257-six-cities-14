@@ -26,24 +26,21 @@ export default function App({
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
-          <Route path={Path.Main} element={<Main {...main} />} />
-          <Route path={Path.Login}
-            element={
-              <ProtectRoute status={authStatus} redirect={Path.Main} revers>
-                <Login />
-              </ProtectRoute>
-            }
-          />
-          <Route path={Path.Favorites}
-            element={
-              <ProtectRoute status={authStatus} redirect={Path.Login}>
-                <Favorites {...favorites} />
-              </ProtectRoute>
-            }
-          />
-          <Route path={Path.Offer} element={<Offer {...offer} />} />
+          <Route path={Path.Main}>
+            <Route index element={<Main {...main} />} />
 
-          <Route path='*' element={<NotFound />} />
+            <Route element={<ProtectRoute status={authStatus} redirect={Path.Main} revers />}>
+              <Route path={Path.Login} element={<Login/>} />
+            </Route>
+
+            <Route element={<ProtectRoute status={authStatus} redirect={Path.Login} />}>
+              <Route path={Path.Favorites} element={<Favorites {...favorites} />} />
+            </Route>
+
+            <Route path={Path.Offer} element={<Offer {...offer} />} />
+
+            <Route path='*' element={<NotFound />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </HelmetProvider>
