@@ -1,4 +1,5 @@
 import Layout from '../../components/layout/layout';
+import { Path } from '../../data/path';
 import Button from '../../ui/button/button';
 
 export default function NotFound(): JSX.Element {
@@ -13,7 +14,7 @@ export default function NotFound(): JSX.Element {
           <h1 className="not-found__title">Whoops!</h1>
           <p className="not-found__text">Page Not Found :(</p>
 
-          <Button text='Back' href='#' className='not-found__link' />
+          <Button text='Back' href={Path.Main} className='not-found__link' />
         </section>
       </div>
     </Layout>
