@@ -298,6 +298,9 @@ img {
   flex-direction: column;
   height: 100vh;
 }
+.page--not-found .header {
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 75%, rgba(255, 255, 255, 0));
+}
 .page--main {
   display: -webkit-box;
   display: -ms-flexbox;
