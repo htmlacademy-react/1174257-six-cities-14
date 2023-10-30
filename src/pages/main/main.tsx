@@ -4,6 +4,7 @@ import Map from '../../components/map/map';
 import MainSort, { MainSortProps } from './components/main-sort/main-sort';
 import uniqid from 'uniqid';
 import Layout from '../../components/layout/layout';
+import { Helmet } from 'react-helmet-async';
 
 export type MainProps = {
   placesCount: number;
@@ -27,6 +28,10 @@ export default function Main({
       mainElClassName={{mod: 'index'}}
     >
       <>
+        <Helmet>
+          <title>6 cities</title>
+        </Helmet>
+
         <h1 className="visually-hidden">Cities</h1>
 
         <MainTabs {...mainTabs}/>

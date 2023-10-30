@@ -9,6 +9,7 @@ import Image from '../../ui/image/image';
 import Reviews from '../../components/reviews/reviews';
 import { ReviewItemProps } from '../../components/reviews/components/review-item/review-item';
 import Layout from '../../components/layout/layout';
+import { Helmet } from 'react-helmet-async';
 
 type OfferFeaturesProps = {
   iconClassName: string;
@@ -47,6 +48,10 @@ export default function Offer({
       mainElClassName={{mod: 'offer'}}
     >
       <>
+        <Helmet>
+          <title>6 cities: offer</title>
+        </Helmet>
+
         <section className="offer">
 
           <OfferGallery {...gallery} />
