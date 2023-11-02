@@ -1,8 +1,9 @@
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
+
 import Button from '../../ui/button/button';
 import Field from '../../ui/field/field';
 import Layout from '../../components/layout/layout';
-import { Helmet } from 'react-helmet-async';
 
 export default function Login(): JSX.Element {
   return (

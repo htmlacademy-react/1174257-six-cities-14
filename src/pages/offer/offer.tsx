@@ -1,15 +1,16 @@
+import { Helmet } from 'react-helmet-async';
+import uniqid from 'uniqid';
+
+import Button from '../../ui/button/button';
+import Image from '../../ui/image/image';
+import Layout from '../../components/layout/layout';
 import Map from '../../components/map/map';
 import { OfferGalleryProps } from './components/offer-gallery/offer-gallery';
 import PlaceCard, { PlaceCardProps } from '../../components/place-card/place-card';
 import OfferGallery from './components/offer-gallery/offer-gallery';
-import Button from '../../ui/button/button';
 import StarLabel, { StarLabelProps } from '../../components/star-label/star-label';
-import uniqid from 'uniqid';
-import Image from '../../ui/image/image';
 import Reviews from '../../components/reviews/reviews';
 import { ReviewItemProps } from '../../components/reviews/components/review-item/review-item';
-import Layout from '../../components/layout/layout';
-import { Helmet } from 'react-helmet-async';
 
 type OfferFeaturesProps = {
   iconClassName: string;

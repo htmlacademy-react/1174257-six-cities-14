@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
-import PlaceCard, { PlaceCardProps } from '../../../../components/place-card/place-card';
 import uniqid from 'uniqid';
+
+import PlaceCard, { PlaceCardProps } from '../../../../components/place-card/place-card';
 
 export type FavoritesItemProps = {
   href: string;

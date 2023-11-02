@@ -1,6 +1,7 @@
+import classNames from 'classnames';
+
 import Footer from '../footer/footer';
 import Header from '../header/header';
-import classNames from 'classnames';
 
 type LayoutProps = {
   className?: {

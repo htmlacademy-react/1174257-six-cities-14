@@ -1,4 +1,5 @@
 import { Navigate, Outlet } from 'react-router-dom';
+
 import { AuthStatus } from '../../data/auth';
 import { Path } from '../../data/path';
 

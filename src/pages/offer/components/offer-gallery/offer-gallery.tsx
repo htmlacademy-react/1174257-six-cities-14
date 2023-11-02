@@ -1,5 +1,6 @@
-import Image, { ImageProps } from '../../../../ui/image/image';
 import uniqid from 'uniqid';
+
+import Image, { ImageProps } from '../../../../ui/image/image';
 
 type SlideGalleryProps = ImageProps;
 

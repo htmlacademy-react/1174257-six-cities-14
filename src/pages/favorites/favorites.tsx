@@ -1,7 +1,8 @@
+import { Helmet } from 'react-helmet-async';
 import uniqid from 'uniqid';
+
 import FavoritesItem, { FavoritesItemProps } from './components/favorites-item/favorites-item';
 import Layout from '../../components/layout/layout';
-import { Helmet } from 'react-helmet-async';
 
 export type FavoritesProps = {
   list: FavoritesItemProps[];

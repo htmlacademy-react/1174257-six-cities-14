@@ -1,7 +1,8 @@
 import { Helmet } from 'react-helmet-async';
+
 import Layout from '../../components/layout/layout';
-import { Path } from '../../data/path';
 import Button from '../../ui/button/button';
+import { Path } from '../../data/path';
 
 export default function NotFound(): JSX.Element {
   return (

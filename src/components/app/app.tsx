@@ -1,12 +1,14 @@
-import { Path } from '../../data/path';
+import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+import ProtectRoute from '../protect-route/protect-route';
 import Main, {MainProps} from '../../pages/main/main';
 import Login from '../../pages/login/login';
 import Favorites, { FavoritesProps } from '../../pages/favorites/favorites';
 import Offer, { OfferProps } from '../../pages/offer/offer';
 import NotFound from '../../pages/not-found/not-found';
-import { HelmetProvider } from 'react-helmet-async';
-import ProtectRoute from '../protect-route/protect-route';
+
+import { Path } from '../../data/path';
 import { AuthStatus } from '../../data/auth';
 
 type AppProps = {

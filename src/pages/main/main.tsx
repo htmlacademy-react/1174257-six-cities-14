@@ -1,10 +1,11 @@
+import { Helmet } from 'react-helmet-async';
+import uniqid from 'uniqid';
+
+import Layout from '../../components/layout/layout';
 import MainTabs, { MainTabsProps } from './components/main-tabs/main-tabs';
+import MainSort, { MainSortProps } from './components/main-sort/main-sort';
 import PlaceCard, { PlaceCardProps } from '../../components/place-card/place-card';
 import Map from '../../components/map/map';
-import MainSort, { MainSortProps } from './components/main-sort/main-sort';
-import uniqid from 'uniqid';
-import Layout from '../../components/layout/layout';
-import { Helmet } from 'react-helmet-async';
 
 export type MainProps = {
   placesCount: number;

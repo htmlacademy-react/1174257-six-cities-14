@@ -1,6 +1,7 @@
-import classNames from 'classnames';
-import StarLabel, { StarLabelProps } from '../star-label/star-label';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
+
+import StarLabel, { StarLabelProps } from '../star-label/star-label';
 
 export type PlaceCardProps = {
   title: string | JSX.Element;
