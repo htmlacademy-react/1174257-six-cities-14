@@ -101,7 +101,7 @@ export const offerData: OfferProps = {
           parentClassName: 'place-card',
         },
         imageSrc: 'img/room.jpg',
-        placeLinkSrc: '#',
+        placeLinkSrc: '/offer/367',
         isBookmark: true,
       },
       {
@@ -117,7 +117,7 @@ export const offerData: OfferProps = {
           parentClassName: 'place-card',
         },
         imageSrc: 'img/apartment-02.jpg',
-        placeLinkSrc: '#',
+        placeLinkSrc: '/offer/2123',
         isBookmark: false,
       },
       {
@@ -134,7 +134,7 @@ export const offerData: OfferProps = {
           parentClassName: 'place-card',
         },
         imageSrc: 'img/apartment-03.jpg',
-        placeLinkSrc: '#',
+        placeLinkSrc: '/offer/721',
         isBookmark: false,
       },
     ]
