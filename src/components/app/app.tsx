@@ -1,6 +1,8 @@
 import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
+import ScrollToTop from '../utils/scroll-to-top';
+
 import ProtectRoute from '../protect-route/protect-route';
 import Main, {MainProps} from '../../pages/main/main';
 import Login from '../../pages/login/login';
@@ -27,6 +29,7 @@ export default function App({
   return (
     <HelmetProvider>
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path={Path.Main}>
             <Route index element={<Main {...main} />} />
