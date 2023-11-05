@@ -45,15 +45,13 @@ export default function PlaceCard({
         <span>{mark}</span>
       </div>}
       <div className={imageCardClass}>
-        <Link to={placeLinkSrc}>
-          <img
-            className="place-card__image"
-            src={imageSrc}
-            width={260}
-            height={200}
-            alt="Place image"
-          />
-        </Link>
+        <img
+          className="place-card__image"
+          src={imageSrc}
+          width={260}
+          height={200}
+          alt="Place image"
+        />
       </div>
       <div className={infoCardClass}>
         <div className="place-card__price-wrapper">
