@@ -1,13 +1,21 @@
-import Header from '../../components/header/header';
+import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
+
 import Button from '../../ui/button/button';
 import Field from '../../ui/field/field';
+import Layout from '../../components/layout/layout';
 
 export default function Login(): JSX.Element {
   return (
-    <div className="page page--gray page--login">
-      <Header />
+    <Layout
+      className={{gray: true, page: 'login'}}
+      mainElClassName={{mod: 'login'}}
+    >
+      <>
+        <Helmet>
+          <title>6 cities: authorization</title>
+        </Helmet>
 
-      <main className="page__main page__main--login">
         <div className="page__login-container container">
           <section className="login">
             <h1 className="login__title">Sign in</h1>
@@ -19,7 +27,7 @@ export default function Login(): JSX.Element {
                 placeholder='Email'
                 isRequired
                 className='login__input-wrapper'
-                inputClassName='form__input'
+                inputClassName='login__input'
               />
               <Field
                 label='Password'
@@ -28,7 +36,7 @@ export default function Login(): JSX.Element {
                 placeholder='Password'
                 isRequired
                 className='login__input-wrapper'
-                inputClassName='form__input'
+                inputClassName='login__input'
               />
               <Button
                 text='Sign in'
@@ -39,13 +47,13 @@ export default function Login(): JSX.Element {
           </section>
           <section className="locations locations--login locations--current">
             <div className="locations__item">
-              <a className="locations__item-link" href="#">
+              <Link className="locations__item-link" to="#">
                 <span>Amsterdam</span>
-              </a>
+              </Link>
             </div>
           </section>
         </div>
-      </main>
-    </div>
+      </>
+    </Layout>
   );
 }

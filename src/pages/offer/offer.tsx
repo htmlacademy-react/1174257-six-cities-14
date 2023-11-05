@@ -1,12 +1,14 @@
-import Header from '../../components/header/header';
+import { Helmet } from 'react-helmet-async';
+import uniqid from 'uniqid';
+
+import Button from '../../ui/button/button';
+import Image from '../../ui/image/image';
+import Layout from '../../components/layout/layout';
 import Map from '../../components/map/map';
 import { OfferGalleryProps } from './components/offer-gallery/offer-gallery';
 import PlaceCard, { PlaceCardProps } from '../../components/place-card/place-card';
 import OfferGallery from './components/offer-gallery/offer-gallery';
-import Button from '../../ui/button/button';
 import StarLabel, { StarLabelProps } from '../../components/star-label/star-label';
-import uniqid from 'uniqid';
-import Image from '../../ui/image/image';
 import Reviews from '../../components/reviews/reviews';
 import { ReviewItemProps } from '../../components/reviews/components/review-item/review-item';
 
@@ -43,10 +45,14 @@ export default function Offer({
   nearPlaces,
 }: OfferProps): JSX.Element {
   return (
-    <div className="page">
-      <Header />
+    <Layout
+      mainElClassName={{mod: 'offer'}}
+    >
+      <>
+        <Helmet>
+          <title>6 cities: offer</title>
+        </Helmet>
 
-      <main className="page__main page__main--offer">
         <section className="offer">
 
           <OfferGallery {...gallery} />
@@ -59,9 +65,7 @@ export default function Offer({
                 </div>
               )}
               <div className="offer__name-wrapper">
-                <h1 className="offer__name">
-                  Beautiful &amp; luxurious studio at great location
-                </h1>
+                <h1 className="offer__name">Beautiful &amp; luxurious studio at great location</h1>
 
                 <Button className="offer__bookmark-button">
                   <svg className="offer__bookmark-icon" width={31} height={33}>
@@ -118,14 +122,10 @@ export default function Offer({
 
                 <div className="offer__description">
                   <p className="offer__text">
-                    A quiet cozy and picturesque that hides behind a a river by the
-                    unique lightness of Amsterdam. The building is green and from
-                    18th century.
+                    A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
                   </p>
                   <p className="offer__text">
-                    An independent House, strategically located between Rembrand
-                    Square and National Opera, but where the bustle of the city
-                    comes to rest in this alley flowery and colorful.
+                    An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.
                   </p>
                 </div>
               </div>
@@ -147,7 +147,7 @@ export default function Offer({
             </div>
           </section>
         </div>
-      </main>
-    </div>
+      </>
+    </Layout>
   );
 }

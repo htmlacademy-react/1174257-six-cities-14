@@ -69,7 +69,7 @@ export const mainData: MainProps = {
         parentClassName: 'place-card',
       },
       imageSrc: 'img/apartment-01.jpg',
-      placeLinkSrc: '#',
+      placeLinkSrc: '/offer/754',
       isBookmark: false,
     },
     {
@@ -85,7 +85,7 @@ export const mainData: MainProps = {
         parentClassName: 'place-card',
       },
       imageSrc: 'img/room.jpg',
-      placeLinkSrc: '#',
+      placeLinkSrc: '/offer/164',
       isBookmark: true,
     },
     {
@@ -101,7 +101,7 @@ export const mainData: MainProps = {
         parentClassName: 'place-card',
       },
       imageSrc: 'img/apartment-02.jpg',
-      placeLinkSrc: '#',
+      placeLinkSrc: '/offer/197',
       isBookmark: false,
     },
     {
@@ -118,7 +118,7 @@ export const mainData: MainProps = {
         parentClassName: 'place-card',
       },
       imageSrc: 'img/apartment-03.jpg',
-      placeLinkSrc: '#',
+      placeLinkSrc: '/offer/9721',
       isBookmark: false,
     },
     {
@@ -134,7 +134,7 @@ export const mainData: MainProps = {
         parentClassName: 'place-card',
       },
       imageSrc: 'img/room.jpg',
-      placeLinkSrc: '#',
+      placeLinkSrc: '/offer/2352',
       isBookmark: true,
     },
   ],

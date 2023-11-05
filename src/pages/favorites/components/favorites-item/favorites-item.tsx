@@ -1,5 +1,7 @@
-import PlaceCard, { PlaceCardProps } from '../../../../components/place-card/place-card';
+import { Link } from 'react-router-dom';
 import uniqid from 'uniqid';
+
+import PlaceCard, { PlaceCardProps } from '../../../../components/place-card/place-card';
 
 export type FavoritesItemProps = {
   href: string;
@@ -16,9 +18,9 @@ export default function FavoritesItem({
     <li className="favorites__locations-items">
       <div className="favorites__locations locations locations--current">
         <div className="locations__item">
-          <a className="locations__item-link" href={href}>
+          <Link className="locations__item-link" to={href}>
             <span>{placeCity}</span>
-          </a>
+          </Link>
         </div>
       </div>
       <div className="favorites__places">

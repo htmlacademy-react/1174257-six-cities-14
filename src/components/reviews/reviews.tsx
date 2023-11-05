@@ -1,8 +1,9 @@
 import classNames from 'classnames';
-import StarRating from '../../ui/star-rating/star-rating';
-import ReviewItem, { ReviewItemProps } from './components/review-item/review-item';
 import uniqid from 'uniqid';
+
+import StarRating from '../../ui/star-rating/star-rating';
 import Button from '../../ui/button/button';
+import ReviewItem, { ReviewItemProps } from './components/review-item/review-item';
 
 export type ReviewsProps = {
   className?: string;

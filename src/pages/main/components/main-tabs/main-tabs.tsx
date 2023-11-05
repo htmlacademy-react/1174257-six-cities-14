@@ -1,4 +1,7 @@
+import { Link } from 'react-router-dom';
+import classNames from 'classnames';
 import uniqid from 'uniqid';
+
 type TabItem = {
   href: string;
   isActive?: boolean;
@@ -10,30 +13,21 @@ export type MainTabsProps = {
 };
 
 export default function MainTabs({list}: MainTabsProps): JSX.Element {
+  const linkClass = (isActive: boolean) => classNames('locations__item-link tabs__item', {['tabs__item--active']: isActive});
+
   return (
     <div className="tabs">
       <section className="locations container">
         <ul className="locations__list tabs__list">
           {list.map((item) => (
             <li className="locations__item" key={uniqid()}>
-
-              {item.isActive && (
-                <a
-                  className='locations__item-link tabs__item tabs__item--active'
-                >
-                  <span>{item.text}</span>
-                </a>
-              )}
-
-              {!item.isActive && (
-                <a
-                  className='locations__item-link tabs__item'
-                  href={item.href}
-                >
-                  <span>{item.text}</span>
-                </a>
-              )}
-
+              <Link
+                className={linkClass(Boolean(item.isActive))}
+                to={item.href}
+                aria-current={item.isActive}
+              >
+                <span>{item.text}</span>
+              </Link>
             </li>
           ))}
         </ul>
