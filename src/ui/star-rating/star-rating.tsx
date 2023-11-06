@@ -1,4 +1,6 @@
+import { Fragment } from 'react';
 import classNames from 'classnames';
+import uniqid from 'uniqid';
 
 type StarRatingProps = {
   className: string;
@@ -14,7 +16,7 @@ export default function StarRating({
   return (
     <div className={starClass}>
       {elements.map((_item, i, array) => (
-        <>
+        <Fragment key={uniqid()}>
           <input
             className="form__rating-input visually-hidden"
             name="rating"
@@ -31,7 +33,7 @@ export default function StarRating({
               <use xlinkHref="#icon-star" />
             </svg>
           </label>
-        </>
+        </Fragment>
       ))}
     </div>
   );
