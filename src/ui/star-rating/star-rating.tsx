@@ -1,16 +1,19 @@
-import { Fragment } from 'react';
 import classNames from 'classnames';
+import { ChangeEvent, Fragment } from 'react';
 import uniqid from 'uniqid';
 
 type StarRatingProps = {
-  className: string;
-  starsCount?: number;
+  className?: string;
+  rating: string;
+  inputOnChange: (evt: ChangeEvent<HTMLInputElement>) => void;
 }
 export default function StarRating({
   className,
-  starsCount = 5,
+  rating,
+  inputOnChange,
 }: StarRatingProps): JSX.Element {
   const starClass = classNames('form__rating', className);
+  const starsCount = 5;
   const elements = Array(starsCount).fill('');
 
   return (
@@ -23,6 +26,8 @@ export default function StarRating({
             defaultValue={array.length - i}
             id={`${array.length - i}-stars`}
             type="radio"
+            onChange={inputOnChange}
+            checked={Number(rating) === (array.length - i)}
           />
           <label
             htmlFor={`${array.length - i}-stars`}

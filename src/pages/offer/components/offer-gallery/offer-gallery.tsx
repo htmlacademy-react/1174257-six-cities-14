@@ -1,26 +1,22 @@
 import uniqid from 'uniqid';
-
-import Image, { ImageProps } from '../../../../ui/image/image';
-
-type SlideGalleryProps = ImageProps;
+import Image from '../../../../ui/image/image';
 
 export type OfferGalleryProps = {
-  slides: ImageProps[];
+  images: string[];
 };
 
-
 export default function OfferGallery({
-  slides,
+  images,
 }: OfferGalleryProps): JSX.Element {
   return (
     <div className="offer__gallery-container container">
       <div className="offer__gallery">
-        {slides.map((slide: SlideGalleryProps) => (
+        {images.map((slide) => (
           <div className="offer__image-wrapper" key={uniqid()}>
             <Image
-              src={slide.src}
-              alt={slide.alt}
-              className={slide.className}
+              src={slide}
+              alt='Photo studio'
+              className='offer__image'
             />
           </div>
         ))}

@@ -4,9 +4,9 @@ import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
 
 import { AuthStatus } from './data/auth';
-import { mainData } from './data/main';
 import { favoritesData } from './data/favorites';
-import { offerData } from './data/offer';
+import { mainData } from './data/main';
+import { offersData } from './data/offers';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -17,7 +17,7 @@ root.render(
     <App
       main={mainData}
       favorites={favoritesData}
-      offer={offerData}
+      offers={offersData}
       authStatus={AuthStatus.Auth}
     />
   </React.StrictMode>

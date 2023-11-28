@@ -1,35 +1,26 @@
-import { Link } from 'react-router-dom';
 import classNames from 'classnames';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Path } from '../../data/path';
+import { OfferProps } from '../../types';
+import { capitalizeFirstLetter } from '../../utils';
+import StarLabel from '../star-label/star-label';
 
-import StarLabel, { StarLabelProps } from '../star-label/star-label';
-
-export type PlaceCardProps = {
-  title: string | JSX.Element;
-  placeType: string;
-  mark?: string;
-  priceValue: number;
-  priceSuffix: string;
-  currencyToken?: string;
-  starLabel: StarLabelProps;
-  imageSrc: string;
-  placeLinkSrc: string;
-  isBookmark: boolean;
+export type PlaceCardProps = OfferProps & {
   className?: string;
   imageClassName?: string;
   infoCardClassName?: string;
 };
 
 export default function PlaceCard({
+  id,
   title,
-  placeType,
-  mark,
-  priceValue,
-  priceSuffix,
-  currencyToken = '€',
-  starLabel,
-  imageSrc,
-  placeLinkSrc,
-  isBookmark,
+  previewImage,
+  type,
+  isPremium,
+  price,
+  rating,
+  isFavorite,
   className,
   imageClassName,
   infoCardClassName,
@@ -38,16 +29,27 @@ export default function PlaceCard({
   const imageCardClass = classNames('place-card__image-wrapper', imageClassName);
   const infoCardClass = classNames('place-card__info', infoCardClassName);
 
+  const [hoverState, setHoverState] = useState(false);
+
+  const handleMouseEnter = () => {
+    setHoverState(true);
+  };
+
+  const handleMouseLeave = () => {
+    setHoverState(false);
+  };
+
+
   return (
-    <article className={cardClass}>
-      {mark &&
+    <article className={cardClass} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} data-hover={hoverState}>
+      {isPremium &&
       <div className="place-card__mark">
-        <span>{mark}</span>
+        <span>Premium</span>
       </div>}
       <div className={imageCardClass}>
         <img
           className="place-card__image"
-          src={imageSrc}
+          src={previewImage}
           width={260}
           height={200}
           alt="Place image"
@@ -56,13 +58,13 @@ export default function PlaceCard({
       <div className={infoCardClass}>
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
-            <b className="place-card__price-value">{currencyToken}{priceValue} </b>
+            <b className="place-card__price-value">€{price} </b>
             <span className="place-card__price-text">
-                /&nbsp;{priceSuffix}
+                /&nbsp;night
             </span>
           </div>
           <button
-            className={`place-card__bookmark-button button ${isBookmark && 'place-card__bookmark-button--active'}`}
+            className={`place-card__bookmark-button button ${isFavorite && 'place-card__bookmark-button--active'}`}
             type="button"
           >
             <svg
@@ -74,7 +76,7 @@ export default function PlaceCard({
             </svg>
             <span className="visually-hidden">
               {
-                isBookmark ?
+                isFavorite ?
                   'In bookmarks' :
                   'To bookmarks'
               }
@@ -82,12 +84,12 @@ export default function PlaceCard({
           </button>
         </div>
 
-        <StarLabel {...starLabel} />
+        <StarLabel value={rating} parentClassName='place-card'/>
 
         <h2 className="place-card__name">
-          <Link to={placeLinkSrc}>{title}</Link>
+          <Link to={`${Path.Offer}/${id}`}>{title}</Link>
         </h2>
-        <p className="place-card__type">{placeType}</p>
+        <p className="place-card__type">{capitalizeFirstLetter(type)}</p>
       </div>
     </article>
   );

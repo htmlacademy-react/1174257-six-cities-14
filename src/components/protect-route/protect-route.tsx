@@ -1,5 +1,4 @@
 import { Navigate, Outlet } from 'react-router-dom';
-
 import { AuthStatus } from '../../data/auth';
 import { Path } from '../../data/path';
 
@@ -17,9 +16,9 @@ function ProtectRoute({
   let output: JSX.Element;
 
   if (revers) {
-    output = status === AuthStatus.Auth ? <Navigate to={redirect} /> : <Outlet/>;
+    output = status === AuthStatus.Auth ? <Navigate to={redirect} /> : <Outlet />;
   } else {
-    output = status === AuthStatus.Auth ? <Outlet/> : <Navigate to={redirect} />;
+    output = status === AuthStatus.Auth ? <Outlet /> : <Navigate to={redirect} />;
   }
 
   return output;
