@@ -1,49 +1,52 @@
+import classNames from 'classnames';
 import { Helmet } from 'react-helmet-async';
+import { useParams } from 'react-router-dom';
 import uniqid from 'uniqid';
-
-import Button from '../../ui/button/button';
-import Image from '../../ui/image/image';
 import Layout from '../../components/layout/layout';
 import Map from '../../components/map/map';
-import { OfferGalleryProps } from './components/offer-gallery/offer-gallery';
 import PlaceCard, { PlaceCardProps } from '../../components/place-card/place-card';
-import OfferGallery from './components/offer-gallery/offer-gallery';
-import StarLabel, { StarLabelProps } from '../../components/star-label/star-label';
-import Reviews from '../../components/reviews/reviews';
 import { ReviewItemProps } from '../../components/reviews/components/review-item/review-item';
+import Reviews from '../../components/reviews/reviews';
+import StarLabel, { StarLabelProps } from '../../components/star-label/star-label';
+import { OffersProps } from '../../types';
+import Button from '../../ui/button/button';
+import Image from '../../ui/image/image';
+import { capitalizeFirstLetter } from '../../utils';
+import NotFound from '../not-found/not-found';
+import OfferGallery from './components/offer-gallery/offer-gallery';
 
-type OfferFeaturesProps = {
-  iconClassName: string;
-  text: string;
-}[];
-
-export type OfferProps = {
-  gallery: OfferGalleryProps;
-  placeInfo: {
-    title: string;
-    mark?: string;
-    rate: number;
-    priceValue: number;
-    priceSuffix: string;
-    currencyToken: string;
-    features: OfferFeaturesProps;
-    starLabel: StarLabelProps;
+export type OfferPageProps = {
+  offers: OffersProps;
+  nears: {
+    cards: OffersProps;
   };
-  placeContent: string[];
-  reviewItems: ReviewItemProps[];
-  nearPlaces: {
-    title: string;
-    cards: PlaceCardProps[];
-  };
+  reviews: ReviewItemProps[];
 }
 
 export default function Offer({
-  gallery,
-  placeInfo,
-  placeContent,
-  reviewItems,
-  nearPlaces,
-}: OfferProps): JSX.Element {
+  offers,
+  nears,
+  reviews,
+}: OfferPageProps): JSX.Element {
+  const { id } = useParams();
+  const offer = offers[Number(id) - 1];
+
+  if (!offer) {
+    return <NotFound />;
+  }
+
+  const features = [
+    {text: capitalizeFirstLetter(offer.type), icon: 'entire'},
+    {text: `${offer.bedrooms} Bedrooms`, icon: 'bedrooms'},
+    {text: `Max ${offer.maxAdults} adults`, icon: 'adults'},
+  ];
+
+  const starLabel: StarLabelProps = {
+    value: offer.rating,
+    showValueBlock: true,
+    parentClassName: 'offer',
+  };
+
   return (
     <Layout
       mainElClassName={{mod: 'offer'}}
@@ -55,34 +58,34 @@ export default function Offer({
 
         <section className="offer">
 
-          <OfferGallery {...gallery} />
+          <OfferGallery images={offer.images} />
 
           <div className="offer__container container">
             <div className="offer__wrapper">
-              {placeInfo.mark && (
+              {offer.isPremium && (
                 <div className="offer__mark">
-                  <span>{placeInfo.mark}</span>
+                  <span>Premium</span>
                 </div>
               )}
               <div className="offer__name-wrapper">
-                <h1 className="offer__name">Beautiful &amp; luxurious studio at great location</h1>
+                <h1 className="offer__name">{offer.title}</h1>
 
-                <Button className="offer__bookmark-button">
+                <Button className={classNames('offer__bookmark-button', offer.isFavorite && 'offer__bookmark-button--active')}>
                   <svg className="offer__bookmark-icon" width={31} height={33}>
                     <use xlinkHref="#icon-bookmark" />
                   </svg>
-                  <span className="visually-hidden">To bookmarks</span>
+                  <span className="visually-hidden">{offer.isFavorite ? 'In bookmarks' : 'To bookmarks'}</span>
                 </Button>
 
               </div>
 
-              <StarLabel {...placeInfo.starLabel} />
+              <StarLabel {...starLabel} />
 
               <ul className="offer__features">
-                {placeInfo.features.map((item) => (
+                {features.map((item) => (
                   <li
                     key={uniqid()}
-                    className={`offer__feature offer__feature--${item.iconClassName}`}
+                    className={`offer__feature offer__feature--${item.icon}`}
                   >
                     {item.text}
                   </li>
@@ -90,14 +93,14 @@ export default function Offer({
               </ul>
 
               <div className="offer__price">
-                <b className="offer__price-value">{placeInfo.currencyToken}{placeInfo.priceValue}</b>
-                <span className="offer__price-text">&nbsp;{placeInfo.priceSuffix}</span>
+                <b className="offer__price-value">€{offer.price}</b>
+                <span className="offer__price-text">&nbsp;night</span>
               </div>
 
               <div className="offer__inside">
                 <h2 className="offer__inside-title">What&rsquo;s inside</h2>
                 <ul className="offer__inside-list">
-                  {placeContent.map((item) => (
+                  {offer.goods.map((item) => (
                     <li className="offer__inside-item" key={uniqid()}>{item}</li>
                   ))}
                 </ul>
@@ -110,27 +113,25 @@ export default function Offer({
                   <div className="offer__avatar-wrapper offer__avatar-wrapper--pro user__avatar-wrapper">
                     <Image
                       className="offer__avatar user__avatar"
-                      src="img/avatar-angelina.jpg"
+                      src={offer.host.avatarUrl}
                       width={74}
                       height={74}
                       alt="Host avatar"
                     />
                   </div>
-                  <span className="offer__user-name">Angelina</span>
-                  <span className="offer__user-status">Pro</span>
+                  <span className="offer__user-name">{offer.host.name}</span>
+                  {offer.host.isPro &&
+                    <span className="offer__user-status">Pro</span>}
                 </div>
 
                 <div className="offer__description">
                   <p className="offer__text">
-                    A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
-                  </p>
-                  <p className="offer__text">
-                    An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.
+                    {offer.description}
                   </p>
                 </div>
               </div>
 
-              <Reviews reviewItems={reviewItems} className='offer__reviews' />
+              <Reviews reviewItems={reviews} className='offer__reviews' />
             </div>
           </div>
 
@@ -139,11 +140,12 @@ export default function Offer({
         </section>
         <div className="container">
           <section className="near-places places">
-            <h2 className="near-places__title">
-              {nearPlaces.title}
-            </h2>
+            <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <div className="near-places__list places__list">
-              {nearPlaces.cards.map((card: PlaceCardProps) => <PlaceCard {...card} key={uniqid()}/>)}
+              {nears.cards
+                .filter((card: PlaceCardProps) => card.id !== Number(id))
+                .splice(0, 3)
+                .map((card: PlaceCardProps) => <PlaceCard {...card} className='cities__card' imageClassName='cities__image-wrapper' key={uniqid()}/>)}
             </div>
           </section>
         </div>

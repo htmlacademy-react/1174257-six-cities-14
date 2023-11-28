@@ -1,27 +1,23 @@
 import { Helmet } from 'react-helmet-async';
 import uniqid from 'uniqid';
-
 import Layout from '../../components/layout/layout';
-import MainTabs, { MainTabsProps } from './components/main-tabs/main-tabs';
-import MainSort, { MainSortProps } from './components/main-sort/main-sort';
-import PlaceCard, { PlaceCardProps } from '../../components/place-card/place-card';
 import Map from '../../components/map/map';
+import PlaceCard, { PlaceCardProps } from '../../components/place-card/place-card';
+import { OffersProps } from '../../types';
+import MainSort, { MainSortProps } from './components/main-sort/main-sort';
+import MainTabs, { MainTabsProps } from './components/main-tabs/main-tabs';
 
-export type MainProps = {
-  placesCount: number;
-  placesCity: string;
-  cards: PlaceCardProps[];
+export type MainPageProps = {
+  cards: OffersProps;
   mainTabs: MainTabsProps;
   mainSort: MainSortProps;
 }
 
 export default function Main({
-  placesCount,
-  placesCity,
   cards,
   mainTabs,
   mainSort,
-}: MainProps): JSX.Element {
+}: MainPageProps): JSX.Element {
   return (
     <Layout
       isMainPage
@@ -42,12 +38,12 @@ export default function Main({
 
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{placesCount} places to stay in {placesCity}</b>
+              <b className="places__found">{cards.length} places to stay in {mainTabs.list.find((item) => item.isActive)?.text}</b>
 
               <MainSort {...mainSort} />
 
               <div className="cities__places-list places__list tabs__content">
-                {cards.map((card: PlaceCardProps) => <PlaceCard {...card} key={uniqid()}/>)}
+                {cards.map((card: PlaceCardProps) => <PlaceCard {...card} className='cities__card' imageClassName='cities__image-wrapper' key={uniqid()}/>)}
               </div>
             </section>
 

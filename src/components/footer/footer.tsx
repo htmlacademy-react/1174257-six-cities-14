@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-
 import { Path } from '../../data/path';
 
 export default function Footer() {

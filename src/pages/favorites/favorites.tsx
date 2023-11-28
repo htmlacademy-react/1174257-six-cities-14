@@ -1,17 +1,18 @@
 import { Helmet } from 'react-helmet-async';
 import uniqid from 'uniqid';
-
-import FavoritesItem, { FavoritesItemProps } from './components/favorites-item/favorites-item';
 import Layout from '../../components/layout/layout';
+import { mainTabsData } from '../../data/main';
+import { OffersProps } from '../../types';
+import FavoritesItem from './components/favorites-item/favorites-item';
 
-export type FavoritesProps = {
-  list: FavoritesItemProps[];
+export type FavoritesPageProps = {
+  list: OffersProps;
 }
 
-export default function Favorites({list}: FavoritesProps): JSX.Element {
+export default function Favorites({list}: FavoritesPageProps): JSX.Element {
+
   return (
     <Layout
-      className={{gray: true}}
       mainElClassName={{mod: 'favorites'}}
       hasFooter
     >
@@ -24,7 +25,21 @@ export default function Favorites({list}: FavoritesProps): JSX.Element {
           <section className="favorites">
             <h1 className="favorites__title">Saved listing</h1>
             <ul className="favorites__list">
-              {list.map((item: FavoritesItemProps) => <FavoritesItem {...item} key={uniqid()} />)}
+              {
+                mainTabsData.list
+                  .map((city) => list.filter((card) => (card.city.name.toLowerCase() === city.text.toLowerCase())))
+                  .map((favoritesItem) => (
+                    !!favoritesItem.length &&
+                    <FavoritesItem
+                      cards={favoritesItem}
+                      placeCity={favoritesItem[0].city.name}
+                      href={mainTabsData.list.find((item) => (
+                        item.text.toLowerCase() === favoritesItem[0].city.name.toLowerCase()
+                      ))?.href ?? '#'}
+                      key={uniqid()}
+                    />)
+                  )
+              }
             </ul>
           </section>
         </div>

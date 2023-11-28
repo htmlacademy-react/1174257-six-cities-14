@@ -1,28 +1,25 @@
 import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-
+import { AuthStatus } from '../../data/auth';
+import { Path } from '../../data/path';
+import Favorites, { FavoritesPageProps } from '../../pages/favorites/favorites';
+import Login from '../../pages/login/login';
+import Main, { MainPageProps } from '../../pages/main/main';
+import NotFound from '../../pages/not-found/not-found';
+import Offer, { OfferPageProps } from '../../pages/offer/offer';
+import ProtectRoute from '../protect-route/protect-route';
 import ScrollToTop from '../utils/scroll-to-top';
 
-import ProtectRoute from '../protect-route/protect-route';
-import Main, {MainProps} from '../../pages/main/main';
-import Login from '../../pages/login/login';
-import Favorites, { FavoritesProps } from '../../pages/favorites/favorites';
-import Offer, { OfferProps } from '../../pages/offer/offer';
-import NotFound from '../../pages/not-found/not-found';
-
-import { Path } from '../../data/path';
-import { AuthStatus } from '../../data/auth';
-
 type AppProps = {
-  main: MainProps;
-  offer: OfferProps;
-  favorites: FavoritesProps;
+  main: MainPageProps;
+  offers: OfferPageProps;
+  favorites: FavoritesPageProps;
   authStatus: AuthStatus;
 }
 
 export default function App({
   main,
-  offer,
+  offers,
   favorites,
   authStatus,
 }: AppProps): JSX.Element {
@@ -42,7 +39,10 @@ export default function App({
               <Route path={Path.Favorites} element={<Favorites {...favorites} />} />
             </Route>
 
-            <Route path={Path.Offer} element={<Offer {...offer} />} />
+            <Route path={Path.Offer}>
+              <Route index element={<NotFound />} />
+              <Route path={`${Path.Offer}/:id`} element={<Offer {...offers} />} />
+            </Route>
 
             <Route path='*' element={<NotFound />} />
           </Route>

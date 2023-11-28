@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import uniqid from 'uniqid';
-
 import PlaceCard, { PlaceCardProps } from '../../../../components/place-card/place-card';
 
 export type FavoritesItemProps = {
@@ -24,7 +23,7 @@ export default function FavoritesItem({
         </div>
       </div>
       <div className="favorites__places">
-        {cards.map((card: PlaceCardProps) => <PlaceCard {...card} key={uniqid()}/>)}
+        {cards.map((card: PlaceCardProps) => <PlaceCard {...card} className='favorites__card' imageClassName='favorites__image-wrapper' infoCardClassName='favorites__card-info' key={uniqid()}/>)}
       </div>
     </li>
   );
